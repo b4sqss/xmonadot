@@ -1,0 +1,42 @@
+Config { font = "xft:FiraCode:pixelsize=12:antialias=true:hinting=true"
+       , additionalFonts = ["xft:FontAwesome:pixelsize=12"
+       ,"xft:Material Icons:pixelsize=12:antialias=true:hinting=true"
+       ]
+       ---, borderColor = "black"
+       ---, border = TopB
+       , bgColor = "#000000"
+       , fgColor = "#ffffff"
+       , alpha = 255
+       , position = Top
+       , lowerOnStart = True
+       , pickBroadest = False
+       , persistent = False
+       , hideOnStart = False
+       , iconRoot = "/home/bezo/.xmonad/xpm/" --default"."
+       , allDesktops = True
+       , commands = [ Run Weather "SBCF" ["-t","<tempC>°C",
+                                         "-L","15","-H","32",
+                                         "--normal","#ffffff",
+                                         "--high","red",
+                                         "--low","lightblue"] 36000
+                    , Run Network "wlan0" ["-L","0","-H","32",
+                                          "--normal","#ffffff","--high","#ffffff"] 10
+                    , Run Cpu ["-L","3","-H","50",
+                               "--normal","#ffffff","--high","#ffffff"] 10
+
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+---                 , Run Swap [] 10
+---                    , Run Com "uname" ["-s","-r"] "" 3600
+                    , Run CatInt 0 "/sys/class/power_supply/BAT0/capacity" [] 50
+                    , Run Date "%a %_d/ %m/ %Y | %H:%M:%S" "date" 10
+---     		        , Run MPD ["-t","<composer> <title> <plength> <statei> "] 10
+                    , Run DiskU [("/", "<used>/<size>"), ("nvme0", "<usedbar>")]
+                               ["-L", "20", "-H", "50", "-m", "1", "-p", "3"] 20
+                    , Run UnsafeStdinReader           
+                    
+                    ]
+       , sepChar = "$"
+       , alignSep = "}{"
+       , template = "<icon=arch.xpm/> $UnsafeStdinReader$  }\
+                    \{$wlan0$ | $cpu$ | $memory$ | $SBCF$ | $cat0$% | $date$"
+       }
