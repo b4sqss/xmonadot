@@ -82,4 +82,4 @@ default_height = 30
   name = "colorscheme"
 
 [options]
-  colorscheme = "glacier"
+  colorscheme = "wal"
