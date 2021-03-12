@@ -126,11 +126,16 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
  alias sudo='doas'
- alias ls="exa"
+ alias l="exa -lgh --icons --group-directories-first"
+ alias l="exa -lgh --icons --group-directories-first"
+ alias zathura='/home/bezo/.config/zathura/zathura'
  alias surf="tabbed surf -pe"
  alias icecat="/home/bezo/Documents/icecat/icecat"
 # Load zsh-syntax-highlighting;
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
+
+
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
@@ -138,7 +143,7 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 eval "$(starship init zsh)"
 #colorscript random
 #cat monkey1
-
+#rupees
+elfman
 
 # Created by `userpath` on 2021-02-12 11:27:35
-export PATH="$PATH:/home/bezo/.local/bin"

@@ -52,15 +52,18 @@ fontFamilyLarge = "xft:FantasqueSansMono Nerd Font:size=16:style=Bold:antialias=
 keybindings =
   [ ("M-<Return>",                 spawn "kitty")
   , ("M-d",                        shellPrompt promptConfig)
+  , ("M-p",                        spawn "rofi -show run")
+  , ("M-<Tab>",                    spawn "rofi -show window")
+  , ("M-S-b",                      spawn "rofi-bluetooth")
   , ("M-a",                        spawn "emacs")
   , ("M-o",                        spawn "librewolf")
 ---  , ("M-e",                        sendMessage ToggleLayout)
-  , ("M-<Tab>",                    sendMessage NextLayout)
+  , ("M-<Space>",                    sendMessage NextLayout)
   , ("M-n",                        refresh)
   , ("M-s",                        windows W.swapMaster)
   , ("M--",                        sendMessage Shrink)
   , ("M-=",                        sendMessage Expand)
-  ,("M-S-j",                       windows W.swapDown)
+  , ("M-S-j",                       windows W.swapDown)
   , ("M-S-k",                      windows W.swapUp)  
   , ("M-t",                        withFocused toggleFloat)
   , ("M-,",                        sendMessage (IncMasterN 1))
@@ -73,6 +76,7 @@ keybindings =
   , ("M-j",                        windows W.focusUp)
   , ("M-k",                        windows W.focusDown)
   , ("M-S-<Tab>",                  sendMessage FirstLayout)
+  , ("<Print>",                     spawn "scrot")
 
   ]
   ++
@@ -88,11 +92,11 @@ keybindings =
 
 promptConfig = def
   { font                = fontFamily
-  , bgColor             = "#16161c"
-  , fgColor             = "#fdf0ed"
-  , bgHLight            = "#e95678"
-  , fgHLight            = "#16161c"
-  , borderColor         = "#e95678"
+  , bgColor             = "#fa8f05"
+  , fgColor             = "#121212"
+  , bgHLight            = "#121212"
+  , fgHLight            = "#fa8f05"
+  , borderColor         = "#fa8f05"
   , promptBorderWidth   = 0
   , position            = Top
   , height              = 20
@@ -108,21 +112,21 @@ promptConfig = def
 
 layouts = avoidStruts $ (tiled ||| Mirror tiled ||| tabs ||| centeredMaster ||| grid) ||| Full
   where
-     tiled = gaps 4 4 $ toggleLayouts maximized (smartBorders (Tall 1 (3/100) (1/2)))
-     centeredMaster = gaps 4 4 $ toggleLayouts maximized (smartBorders (ThreeColMid 1 (3/100) (1/2)))
-     tabs = gaps 8 0 $ noBorders (tabbed shrinkText tabTheme)
-     grid = gaps 4 4 $ toggleLayouts maximized (smartBorders Grid)
+     tiled = gaps 10 10 $ toggleLayouts maximized (smartBorders (Tall 1 (3/100) (1/2)))
+     centeredMaster = gaps 10 10 $ toggleLayouts maximized (smartBorders (ThreeColMid 1 (3/100) (1/2)))
+     tabs = gaps 10 10 $ noBorders (tabbed shrinkText tabTheme)
+     grid = gaps 10 10 $ toggleLayouts maximized (smartBorders Grid)
      maximized = smartBorders Full
      gaps n k = spacingRaw False (Border n n n n) True (Border k k k k) True
 
 tabTheme = def
   { fontName            = fontFamily
-  , activeColor         = "#e95678"
-  , inactiveColor       = "#16161c"
-  , urgentColor         = "#ee64ae"
-  , activeTextColor     = "#16161c"
-  , inactiveTextColor   = "#fdf0ed"
-  , urgentTextColor     = "#16161c"
+  , activeColor         = "#121212"
+  , inactiveColor       = "#121212"
+  , urgentColor         = "#121212"
+  , activeTextColor     = "#121212"
+  , inactiveTextColor   = "#121212"
+  , urgentTextColor     = "#121212"
   , activeBorderWidth   = 0
   , inactiveBorderWidth = 0
   , urgentBorderWidth   = 0
@@ -130,8 +134,8 @@ tabTheme = def
 
 wnameTheme = def
   { swn_font    = fontFamilyLarge
-  , swn_bgcolor = "#e95678"
-  , swn_color   = "#16161c"
+  , swn_bgcolor = "#fdf0ed"
+  , swn_color   = "#121212"
   , swn_fade    = 2
   }
 
@@ -141,7 +145,7 @@ windowRules = placeHook (smart (0.5, 0.5))
   , (className =? "Ripcord" <&&> title =? "Preferences")   --> doFloat
   , className  =? "Xmessage"                               --> doFloat
   , className  =? "Krita"                                  --> doFloat
-  , className  =? "Xcalc"                                  --> doFloat
+  , className  =? "XCalc"                                  --> doFloat
   , resource   =? "desktop_window"                         --> doIgnore
   , resource   =? "kdesktop"                               --> doIgnore
   , isDialog                                               --> doF W.swapUp <+> doFloat ]
@@ -152,10 +156,10 @@ windowRules = placeHook (smart (0.5, 0.5))
 autostart = do
   spawnOnce "xsetroot -cursor_name left_ptr &"
   spawnOnce "dunst &"
-  spawnOnce "bash ~/.config/polybar/launch.sh &"
-  spawnOnce "mpd &"
+  spawnOnce "bash /home/bezo/.config/polybar/launch.sh &"
   spawnOnce "picom &"
-  spawnOnce "wal -i $HOME/Pictures/wallpapers/"
+---  spawnOnce "wal -i $HOME/Pictures/wallpapers/"
+  spawnOnce "sh ~/.fehbg &"
   setWMName "xmonad"
 
 dbusClient = do
@@ -183,11 +187,11 @@ polybarHook dbus = dynamicLogWithPP $ xmobarPP
 main' dbus = xmonad . docks . ewmh $ def
   { focusFollowsMouse  = True
   , clickJustFocuses   = True
-  , borderWidth        = 2
+  , borderWidth        = 3
   , modMask            = mod4Mask
   , workspaces         = ws
-  , normalBorderColor  = "#2e303e"
-  , focusedBorderColor = "#e95678"
+  , normalBorderColor  = "#666666"
+  , focusedBorderColor = "#fa8f05"
   , layoutHook         = showWName' wnameTheme layouts
   , manageHook         = windowRules
   , logHook            = fadeInactiveLogHook 0.95 <+> polybarHook dbus
