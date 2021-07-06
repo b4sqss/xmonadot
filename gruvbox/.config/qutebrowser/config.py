@@ -340,5 +340,5 @@ c.colors.tabs.pinned.selected.odd.fg = c.colors.tabs.selected.odd.fg
 c.colors.webpage.bg = bg4
 
 
-c.url.start_pages = "/home/basqs/Documents/startpage/index.html"
-c.url.default_page = "/home/basqs/Documents/startpage/index.html"
+c.url.start_pages = "/home/basqs/Documents/Projects/startpage/index.html"
+c.url.default_page = "/home/basqs/Documents/Project/startpage/index.html"

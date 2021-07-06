@@ -1,6 +1,9 @@
 export PATH=/home/basqs/.cabal/bin:$PATH
 export PATH=/home/basqs/.local/share/cargo/bin:$PATH
+export PATH=/home/basqs/.local/share/go/bin:$PATH
 export PATH=/home/basqs/.local/bin:$PATH
+export PATH=/home/basqs/.local/applications:$PATH
+export PATH=/home/basqs/.nix-profile/bin:$PATH
 
 export EDITOR="nvim "
 export TERMINAL="urxvt"
@@ -8,7 +11,6 @@ export BROWSER="firefox"
 
 #change config directories
 
-export NIX_REMOTE=daemon
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -33,14 +35,15 @@ export EMACS_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/emacs"
 #export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/mbsync/config"
 export QT_QPA_PLATFORMTHEME="gtk2"
 export _JAVA_AWT_WM_NONREPARENTING=1
-
+export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+#. "/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
 
 #nnn file manager
 
 export NNN_BMS="d:$HOME/Documents;D:$HOME/Downloads/"
 export LC_COLLATE="C"
 export NNN_FIFO=/tmp/nnn.fifo
-export NNN_PLUG='f:fzopen;o:fzcd;m:nmount;.:preview-tui-ext;x:_chmod +x $nnn'
+export NNN_PLUG='o:fzopen;f:fzcd;m:nmount;.:preview-tui;x:_chmod +x $nnn'
 export NNN_ARCHIVE="\\.(7z|bz2|gz|tar|tgz|zip)$"
 BLK="0B" CHR="0B" DIR="04" EXE="06" REG="00" HARDLINK="06" SYMLINK="06" MISSING="00" ORPHAN="09" FIFO="06" SOCK="0B" OTHER="06"
 export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"

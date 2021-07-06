@@ -60,10 +60,10 @@
 
 
 !! URxvt Appearance
-URxvt.font: xft:Terminus:style=Regular:size=8,xft:fontawesome:pixelsize=10
-URxvt.boldFont: xft:Terminus:style=Regular:size=8,xft:fontawesome:pixelsize=10
-URxvt.italicFont: xft:Terminus:style=Regular:size=8,xft:fontawesome:pixelsize=10
-URxvt.boldItalicFont: xft:Terminus:style=Regular:size=8,xft:fontawesome:pixelsize=10
+URxvt.font: xft:firacode:style=Regular:size=8,xft:fontawesome:pixelsize=10
+URxvt.boldFont: xft:firacode:style=Regular:size=8,xft:fontawesome:pixelsize=10
+URxvt.italicFont: xft:firacode:style=Regular:size=8,xft:fontawesome:pixelsize=10
+URxvt.boldItalicFont: xft:firacode:style=Regular:size=8,xft:fontawesome:pixelsize=10
 URxvt.transparent: false
 URxvt.lineSpace: 0
 URxvt.geometry: 92x24
@@ -95,7 +95,7 @@ URxvt.keysym.M-c: perl:clipboard:copy
 URxvt.keysym.M-v: perl:clipboard:paste
 URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
 URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.urlLauncher: firefox
+URxvt.urlLauncher: qutebrowser
 URxvt.underlineURLs: true
 URxvt.keysym.C-plus:     perl:resize-font:bigger
 URxvt.keysym.C-minus:    perl:resize-font:smaller
