@@ -34,9 +34,6 @@ export EMACS_CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/emacs"
 #export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
 #export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/mbsync/config"
 export QT_QPA_PLATFORMTHEME="gtk2"
-export _JAVA_AWT_WM_NONREPARENTING=1
-export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
-#. "/etc/profiles/per-user/$USER/etc/profile.d/hm-session-vars.sh"
 
 #nnn file manager
 
@@ -49,5 +46,5 @@ BLK="0B" CHR="0B" DIR="04" EXE="06" REG="00" HARDLINK="06" SYMLINK="06" MISSING=
 export NNN_FCOLORS="$BLK$CHR$DIR$EXE$REG$HARDLINK$SYMLINK$MISSING$ORPHAN$FIFO$SOCK$OTHER"
 
 if [ "$(tty)" = "/dev/tty1" ]; then
-	startx
+	sx
 fi

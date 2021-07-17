@@ -14,7 +14,7 @@
 
 (menu-bar-mode -1)
 
-(setq display-graphic-p t)
+                                        ;     (setq display-graphic-p t)
 
 (setq visible-bell nil)
 
@@ -24,16 +24,16 @@
 (set-default-coding-systems 'utf-8)
 (set-face-bold-p 'bold nil)
 (set-face-attribute 'default nil
-		    :font "firacode:antialias=true"
-		    :height 80)
+                    :font "firacode:antialias=true"
+                    :height 80)
 
 (setq backup-directory-alist `(("." . ,(expand-file-name "tmp/backups/" user-emacs-directory))))
 
 (require 'package)
 
 (setq package-archives '(("melpa" ."https://melpa.org/packages/")
-			 ("org" . "https:/orgmode.org/elpa/")
-			 ("elpa" . "https://elpa.gnu.org/packages/")))
+                         ("org" . "https:/orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
 
 (package-initialize)
 (unless package-archive-contents
@@ -51,63 +51,17 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector
-   ["#fafafa" "#e45649" "#50a14f" "#986801" "#4078f2" "#a626a4" "#0184bc" "#383a42"])
  '(custom-safe-themes
    '("88c59500c520bdba6c6a164deb767b3b14c6a9686a24781adb3b9a1a883b9e50" "75b8719c741c6d7afa290e0bb394d809f0cc62045b93e1d66cd646907f8e6d43" "f8925b6e0b5efdefece2eff53597a746cd47f4aa097942db2ebda82b7b9b3670" default))
- '(elfeed-feeds '("https://reddit.com/r/emacs.rss"))
- '(fci-rule-color "#383a42")
+ '(elfeed-feeds '("https://reddit.com/r/emacs.rss") t)
  '(ivy-mode t)
- '(jdee-db-active-breakpoint-face-colors (cons "#f0f0f0" "#4078f2"))
- '(jdee-db-requested-breakpoint-face-colors (cons "#f0f0f0" "#50a14f"))
- '(jdee-db-spec-breakpoint-face-colors (cons "#f0f0f0" "#9ca0a4"))
- '(objed-cursor-color "#e45649")
  '(org-agenda-files '("~/Documents/org/org-agenda.org"))
  '(package-selected-packages
-   '(marginalia vertico lsp-latex typescript-mode lsp-haskell lsp-javacomp lsp-java company-rtags ivy-rtags rtags cmake-ide treemacs-evil ranger elfeed-org elfeed-web go-mode exwm-x exwm-firefox-evil exwm-surf dmenu poly-R ess-view ess-r-insert-obj ess-R-data-view ess nix-mode nixos-options autothemer company-c-headers company-lua company-plsense company-php company-shell company-web company-auctex minions emojify markdown-preview-eww ghub+ ghub mingus kaolin-themes poet-theme company lsp-ivy lsp-treemacs no-littering w3m yaml-mode elfeed latex-preview-pane auto-complete-auctex auctex dired-open all-the-icons-dired eterm-256color epc w3 webkit rust-mode haskell-mode dashboard evil-magit magit projectile hydra sorcery-theme almost-mono-themes evil-collection undo-tree evil-mode evil-tutor evil general doom-themes helpful ivy-rich which-key rainbow-delimiters doom-modeline command-log-mode use-package))
- '(pdf-view-midnight-colors (cons "#383a42" "#fafafa"))
- '(rustic-ansi-faces
-   ["#fafafa" "#e45649" "#50a14f" "#986801" "#4078f2" "#a626a4" "#0184bc" "#383a42"])
- '(vc-annotate-background "#fafafa")
- '(vc-annotate-color-map
-   (list
-    (cons 20 "#50a14f")
-    (cons 40 "#688e35")
-    (cons 60 "#807b1b")
-    (cons 80 "#986801")
-    (cons 100 "#ae7118")
-    (cons 120 "#c37b30")
-    (cons 140 "#da8548")
-    (cons 160 "#c86566")
-    (cons 180 "#b74585")
-    (cons 200 "#a626a4")
-    (cons 220 "#ba3685")
-    (cons 240 "#cf4667")
-    (cons 260 "#e45649")
-    (cons 280 "#d2685f")
-    (cons 300 "#c07b76")
-    (cons 320 "#ae8d8d")
-    (cons 340 "#383a42")
-    (cons 360 "#383a42")))
- '(vc-annotate-very-old-color nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+   '(material-theme zig-mode which-key weechat vertico use-package undo-tree typescript-mode twittering-mode treemacs-evil symon spotify smart-mode-line rust-mode reddigg ranger rainbow-delimiters projectile-ripgrep powerline-evil poly-R pandoc ox-pandoc org-super-agenda org-evil org-bullets org-auto-tangle nordless-theme nord-theme no-littering nnreddit nixos-options nix-mode mpdmacs minions mastodon marginalia magithub lsp-ui lsp-latex lsp-javacomp lsp-java lsp-ivy lsp-haskell latex-preview-pane jabber ivy-rtags ivy-rich ivy-mpdel horizon-theme helpful handoff gruvbox-theme go-mode general geiser-mit fira-code-mode exwm-x exwm-surf exwm-firefox-evil ewal-doom-themes evil-tutor evil-nerd-commenter evil-collection eterm-256color ess-r-insert-obj ess-R-data-view emojify elfeed-web elfeed-org doom-modeline doom dmenu dired-toggle dashboard counsel-projectile company-rtags company-auctex command-log-mode color-theme-x cmake-ide base16-theme auto-org-md atom-one-dark-theme all-the-icons-gnus ac-geiser)))
 
 (load-theme 'doom-gruvbox)
 
-;; line numbers
-(column-number-mode)
 (global-display-line-numbers-mode t)
-
-(dolist (mode '(org-mode-hook
-		term-mode-hook
-		eshell-mode-hook))
-
-  (add-hook mode (lambda() (display-line-numbers-mode 0))))
 
 (use-package general
   :config
@@ -119,21 +73,20 @@
   (basqs/leader-keys
     "c" '(kill-buffer :which-key "kill buffer")
     "TAB" '(counsel-switch-buffer :which-key "change buffer")
-    "." '(counsel-find-file :which-key "find-file")
     "t" '(:ignore t :which-key "toggles")
     "tl" '(toggle-truncate-lines :which-key "truncate lines")
     "tt" '(counsel-load-theme :which-key "chose theme")))
 
 (defun basqs/evil-hook ()
   (dolist (mode '(custom-mode
-		  eshell-mode
-		  git-rebase-mode
-		  erc-mode
-		  circe-server-mode
-		  circe-chat-mode
-		  circe-query-mode
-		  sauron-mode
-		  term-mode))
+                  eshell-mode
+                  git-rebase-mode
+                  erc-mode
+                  circe-server-mode
+                  circe-chat-mode
+                  circe-query-mode
+                  sauron-mode
+                  term-mode))
     (add-to-list 'evil-emacs-state-modes mode)))
 
 (use-package undo-tree
@@ -169,7 +122,7 @@
   (evil-collection-outline-bind-tab-p nil)
   :config
   (setq evil-collection-mode-list
-	(remove 'lispy evil-collection-mode-list))
+        (remove 'lispy evil-collection-mode-list))
   (evil-collection-init))
 
 (basqs/leader-keys
@@ -180,22 +133,20 @@
   "l"  'evil-window-next
   "h"  'evil-window-prev)
 
-(use-package command-log-mode)
-
 (use-package ivy
   :bind (("C-s" . swiper)
-	 :map ivy-minibuffer-map
-	 ("TAB" . ivy-alt-done)
-	 ("C-l" . ivy-alt-done)
-	 ("C-j" . ivy-next-line)
-	 ("C-k" . ivy-previous-line)
-	 :map ivy-switch-buffer-map
-	 ("C-k" . ivy-previous-line)
-	 ("C-l" . ivy-done)
-	 ("C-d" . ivy-switch-buffer-kill)
-	 :map ivy-reverse-i-search-map
-	 ("C-k" . ivy-previous-line)
-	 ("C-d" . ivy-reverse-i-search-kill))
+         :map ivy-minibuffer-map
+         ("TAB" . ivy-alt-done)
+         ("C-l" . ivy-alt-done)
+         ("C-j" . ivy-next-line)
+         ("C-k" . ivy-previous-line)
+         :map ivy-switch-buffer-map
+         ("C-k" . ivy-previous-line)
+         ("C-l" . ivy-done)
+         ("C-d" . ivy-switch-buffer-kill)
+         :map ivy-reverse-i-search-map
+         ("C-k" . ivy-previous-line)
+         ("C-d" . ivy-reverse-i-search-kill))
   :config
   (ivy-mode 1))
 
@@ -212,8 +163,8 @@
 
 ;; lower threshold back to 8 mib (default is 800kb)
 (add-hook 'emacs-startup-hook
-	  (lambda ()
-	    (setq gc-cons-threshold (expt 2 23))))
+          (lambda ()
+            (setq gc-cons-threshold (expt 2 23))))
 
 (use-package which-key
   :init (which-key-mode)
@@ -227,10 +178,10 @@
 
 (use-package counsel
   :bind (("M-x" . counsel-M-x)
-	 ("C-x b" . counsel-ibuffer)
-	 ("C-x C-f" . counsel-find-file)
-	 :map minibuffer-local-map
-	 ("C-r" . 'counsel-minibuffer-history))
+         ("C-x b" . counsel-ibuffer)
+         ("C-x C-f" . counsel-find-file)
+         :map minibuffer-local-map
+         ("C-r" . 'counsel-minibuffer-history))
   :config
   (setq ivy-initial-inputs-alist nil))
 
@@ -247,31 +198,14 @@
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpfullkey))
 
-(use-package term
-  :config
-  (setq explicit-shell-file-name "zsh")
-  ;;(setq explicit-zsh-args '())
-  (setq term-prompt-regexp "^[^#$%>\n]*[#$%>] *"))
-
-(use-package eterm-256color
-  :hook (term-mode . eterm-256color-mode))
-
 (defun efs/configure-eshell ()
-  ;; Save command history when commands are entered
-  (add-hook 'eshell-pre-command-hook 'eshell-save-some-history)
-
   ;; Truncate buffer for performance
   (add-to-list 'eshell-output-filter-functions 'eshell-truncate-buffer)
 
-  ;; Bind some useful keys for evil-mode
-  (evil-define-key '(normal insert visual) eshell-mode-map (kbd "C-r") 'counsel-esh-history)
-  (evil-define-key '(normal insert visual) eshell-mode-map (kbd "<home>") 'eshell-bol)
-  (evil-normalize-keymaps)
-
   (setq eshell-history-size         10000
-	eshell-buffer-maximum-lines 10000
-	eshell-hist-ignoredups t
-	eshell-scroll-to-bottom-on-input t))
+        eshell-buffer-maximum-lines 10000
+        eshell-hist-ignoredups t
+        eshell-scroll-to-bottom-on-input t))
 
 (use-package eshell
   :hook (eshell-first-time-mode . efs/configure-eshell))
@@ -288,11 +222,17 @@
     "h" 'dired-up-directory
     "l" 'dired-find-file))
 
+(use-package dired-toggle)
+
+(basqs/leader-keys
+  "." '(counsel-find-file :which-key "find-file")
+  )
+
 (use-package dashboard
   :ensure t
   :config (dashboard-setup-startup-hook))
 
-(setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+                                        ;     (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
 
 ;; Content is not centered by default. To center, set
 (setq dashboard-center-content t)
@@ -303,9 +243,9 @@
 (setq dashboard-show-shortcuts t)
 
 (setq dashboard-items '((recents  . 5)
-			(bookmarks . 5)
-			;;                      (projects . 5)
-			(agenda . 10)))
+                        (bookmarks . 5)
+                        ;;(projects . 5)
+                        (agenda . 10)))
 
 (setq dashboard-set-heading-icons t)
 (setq dashboard-set-file-icons t)
@@ -331,31 +271,6 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
-(use-package hydra)
-
-(defhydra hydra-text-scale (:timeout 2)
-  ("j" text-scale-increase "in")
-  ("k" text-scale-decrease "out")
-  ("f" nil "finished :exit t"))
-
-(basqs/leader-keys
-  "ts" '(hydra-text-scale/body :which-key "scale text"))
-
-(use-package projectile
-  :diminish projectile-mode
-  :config (projectile-mode)
-  :custom ((projectile-completion-system 'ivy))
-  :demand t
-  :bind-keymap
-  ("C-c p" . projectile-command-map)
-  :init
-  (when (file-directory-p "~/Documents/Projects")
-    (setq projectile-project-search-path '("~/Documents/Projects")))
-  (setq projectile-switch-project-action #'basqs/switch-project-action))
-
-(use-package ripgrep)
-(use-package projectile-ripgrep)
-
 (use-package magit
   :bind ("C-M-;" . magit-status)
   :commands (magit-status magit-get-current-branch)
@@ -377,8 +292,14 @@
   "gF"  'magit-fetch-all
   "gr"  'magit-rebase)
 
+(use-package magithub
+  :after magit
+  :config
+  (magithub-feature-autoinject t)
+  (setq magithub-clone-default-directory "~/Documents/git"))
+
 (defun basqs/org-mode-setup ()
-					;(org-indent-mode)
+  (org-indent-mode)
   (variable-putch-mode 1)
   (auto-fill-mode 0)
   (visual-line-mode 1)
@@ -389,11 +310,8 @@
   :hook (org-mode . basqs/org-mode-setup)
   :config
   (setq org-ellipsis " ▾"
-					;	org-hide-emphasis-markers t
-	))
-
-(add-hook 'org-mode-hook (lambda () (setq truncate-lines t)))
-
+                                        ;	org-hide-emphasis-markers t
+        ))
 
 (basqs/leader-keys
   "o"   '(:ignore t :which-key "org")
@@ -416,20 +334,7 @@
 
 (setq org-todo-keywords
       '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d!)")
-	(sequence "BACKLOG(b)" "PLAN(p)" "READY(r)" "ACTIVE(a)" "REVIEW(v)" "WAIT(w@/!)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(k@)")))
-
-(setq org-tag-alist
-      '((:startgroup)
-					; Put mutually exclusive tags here
-	(:endgroup)
-	("@consulta" . ?H)
-	("@escola" . ?W)
-	("aniversários" . ?a)
-	("planning" . ?p)
-	("publish" . ?P)
-	("batch" . ?b)
-	("note" . ?n)
-	("idea" . ?i)))
+        (sequence "BACKLOG(b)" "PLAN(p)" "READY(r)" "ACTIVE(a)" "REVIEW(v)" "WAIT(w@/!)" "HOLD(h)" "|" "COMPLETED(c)" "CANC(k@)")))
 
 (require 'org-tempo)
 
@@ -450,8 +355,6 @@
 (add-to-list 'org-modules 'org-habit)
 (setq org-habit-graph-column 60)
 
-(use-package org-super-agenda)
-
 (use-package latex-preview-pane)
 
 (load "auctex.el" nil t t)
@@ -464,7 +367,6 @@
 (setq TeX-PDF-mode t)
 
 (use-package pandoc)
-(use-package ox-pandoc)
 
 (use-package lsp-ivy
   :commands lsp-ivy-workspace-symbol)
@@ -534,51 +436,37 @@
 (eval-after-load "auto-complete"
   '(add-to-list 'ac-modes 'geiser-repl-mode))
 
-;; Set our nickname & real-name as constant variables
-(setq
- erc-nick "basqs"     ; Our IRC nick
- erc-user-full-name "basqs") ; Our /whois name
-
-;; Define a function to connect to a server
-(defun some-serv ()
-  (lambda ()
-    (interactive)
-    (erc :server "irc.libera.chat"
-	 :port   "6697")))
-
-;; Or assign it to a keybinding
-;; This example is also using erc's TLS capabilities:
-					;  (global-set-key "\C-cen"
-					;                  (lambda ()
-					;                    (interactive)
-					;                    (erc-tls :server ""
-					;                             :port   "6697")))
-
 (delete 'mu4e evil-collection-mode-list)
 (delete 'mu4e-conversation evil-collection-mode-list)
 
 (use-package mu4e
-:ensure nil
-;; :load-path "/usr/share/emacs/site-lisp/mu4e/"
-;; :defer 20 ; Wait until 20 seconds after startup
-:config
+  :ensure nil
+  ;; :load-path "/usr/share/emacs/site-lisp/mu4e/"
+  ;; :defer 20 ; Wait until 20 seconds after startup
+  :config
 
-;; This is set to 't' to avoid mail syncing issues when using mbsync
-(setq mu4e-change-filenames-when-moving t)
+  ;; This is set to 't' to avoid mail syncing issues when using mbsync
+  (setq mu4e-change-filenames-when-moving t)
 
-;; Refresh mail using isync every 10 minutes
-(setq mu4e-update-interval (* 10 60))
-(setq mu4e-get-mail-command "mbsync -a")
-(setq mu4e-maildir "~/Mail/")
+  ;; Refresh mail using isync every 10 minutes
+  (setq mu4e-update-interval (* 10 60))
+  (setq mu4e-get-mail-command "mbsync -a")
+  (setq mu4e-maildir "~/Mail/")
 
-(setq mu4e-drafts-folder "/Gmail/[Gmail]/Drafts")
-(setq mu4e-sent-folder   "/Gmail/[Gmail]/Sent Mail")
-(setq mu4e-refile-folder "/Gmail/[Gmail]/All Mail")
-(setq mu4e-trash-folder  "/Gmail/[Gmail]/Trash")
+  (setq mu4e-drafts-folder "/Gmail/[Gmail]/Drafts")
+  (setq mu4e-sent-folder   "/Gmail/[Gmail]/Sent Mail")
+  (setq mu4e-refile-folder "/Gmail/[Gmail]/All Mail")
+  (setq mu4e-trash-folder  "/Gmail/[Gmail]/Trash")
 
-(setq mu4e-maildir-shortcuts
-'((:maildir "/Gmail/Inbox"    :key ?i)
-(:maildir "/Gmail/[Gmail]/Sent Mail" :key ?s)
-(:maildir "/Gmail/[Gmail]/Trash"     :key ?t)
-(:maildir "/Gmail/[Gmail]/Drafts"    :key ?d)
-(:maildir "/Gmail/[Gmail]/All Mail"  :key ?a))))
+  (setq mu4e-maildir-shortcuts
+        '((:maildir "/Gmail/Inbox"    :key ?i)
+          (:maildir "/Gmail/[Gmail]/Sent Mail" :key ?s)
+          (:maildir "/Gmail/[Gmail]/Trash"     :key ?t)
+          (:maildir "/Gmail/[Gmail]/Drafts"    :key ?d)
+          (:maildir "/Gmail/[Gmail]/All Mail"  :key ?a))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

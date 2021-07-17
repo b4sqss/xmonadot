@@ -3,16 +3,21 @@ super + Return
 	urxvt
 
 super + q
-        xscreensaver-command --lock
+  xscreensaver-command --lock
 
 # program launcher
 super + p
-        dmenu_run -i -p run: -w dmenu -nf '#ebdbb2' -nb '#1d2021' -sb '#689d6a' -sf '#1d2021' -fn firacode:size=8 #-l 10
+  dmenu_run -i -p run: -w dmenu -nf '#ebdbb2' -nb '#1d2021' -sb '#689d6a' -sf '#1d2021' -fn firacode:size=8 #-l 10
 
 # web browsers
 super + o
 	qutebrowser
 
+
+super + shift + o
+	firefox
+
+# work browser
 super + w
 	chromium
 

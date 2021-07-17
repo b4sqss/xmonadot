@@ -18,7 +18,7 @@ _comp_options+=(globdots)
 
 # Load aliases and shortcuts if existent.
 
-alias l="ls --color -ls"
+alias l="exa -l"
 alias ls="ls --color"
 alias sl="ls --color"
 #alias mocp="padsp mocp"

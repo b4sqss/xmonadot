@@ -8,6 +8,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/c.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'mcchrish/nnn.vim'
 Plug 'jreybert/vimagit'
 Plug 'lukesmithxyz/vimling'
 Plug 'vimwiki/vimwiki'
